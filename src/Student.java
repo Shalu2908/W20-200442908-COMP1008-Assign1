@@ -1,4 +1,6 @@
- public class Student
+import javafx.scene.image.Image;
+
+public class Student
  {
 
     // These are instance variables for a student
@@ -7,8 +9,18 @@
 
     private String firstName, lastName;
     private int studentNumber;
+    private Image studentImage;
 
-    /**
+
+     /**
+      *  This will return image
+      * @return
+      */
+     public Image getStudentImage() {
+         return studentImage;
+     }
+
+     /**
      * This is the constructor.  It's goal is to validate the arguments and set
      * valid values in the instance variables
      *  eg. firstName,LastName and studentNumber
@@ -30,8 +42,8 @@
 
     public void setFirstName(String firstName) {
 
-     if( firstName.length() > 2)
-        this.firstName = firstName ;
+     if( firstName.length() > 1)
+        this.firstName = firstName.substring(0,1).toUpperCase()+firstName.substring(1) ;
      else
          throw new IllegalArgumentException("Student first Name should be more than one characters");
     }
@@ -42,8 +54,8 @@
 
     public void setLastName(String lastName) {
 
-        if( lastName.length() > 2)
-        this.lastName = lastName;
+        if( lastName.length() > 1)
+            this.lastName = lastName.substring(0,1).toUpperCase()+lastName.substring(1);
         else
             throw new IllegalArgumentException("Student's last Name should be more than one characters");
     }
@@ -65,8 +77,8 @@
       */
         public String toString()
         {
-            return String.format("%s %s Student #: %d", firstName.substring(0,1).toUpperCase()+firstName.substring(1),
-                    lastName.substring(0,1).toUpperCase()+lastName.substring(1), studentNumber);
+            return String.format("%s %s Student #: %d",firstName,lastName,studentNumber);
+
         }
 
 
