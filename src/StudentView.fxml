@@ -35,7 +35,7 @@
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TextArea fx:id="activitiesTextArea" prefHeight="127.0" prefWidth="134.0" />
+         <ListView fx:id="listView" prefHeight="166.0" prefWidth="165.0" />
    </HBox>
 
 

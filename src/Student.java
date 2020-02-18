@@ -1,5 +1,7 @@
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+
 public class Student
  {
 
@@ -10,6 +12,7 @@ public class Student
     private String firstName, lastName;
     private int studentNumber;
     private Image studentImage;
+
 
 
      /**

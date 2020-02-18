@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -21,6 +22,9 @@ public class StudentViewController implements Initializable {
     @FXML
     private Label studentNumLabel;
 
+    @FXML
+    private ListView listView;
+
 
 
     @Override
@@ -34,7 +38,7 @@ public class StudentViewController implements Initializable {
         studentImageView.setImage(new Image("./images/studentImage.jpg"));
 
 
-
+        listView.getItems().addAll("Dancing" , "Cooking", "Reading", "Listen to Music"," Meditation");
 
     }
 }
