@@ -26,7 +26,11 @@ public class StudentViewController implements Initializable {
     private ListView listView;
 
 
-
+    /**
+     * This method will initialize variables and get values from student class
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

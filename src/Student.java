@@ -1,3 +1,4 @@
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -5,13 +6,14 @@ import java.util.ArrayList;
 public class Student
  {
 
-    // These are instance variables for a student
-    //They are marked as private so that ONLY the student class can control how they are
-    //set
+    /**These are instance variables for a student
+     * They are marked as private so that ONLY the student class can control how they are set
+     */
 
     private String firstName, lastName;
     private int studentNumber;
     private Image studentImage;
+    private ListView listView;
 
 
 
@@ -43,6 +45,10 @@ public class Student
         return firstName;
     }
 
+     /**
+      * This method will put validation on first name and make the first letter capital
+      * @param firstName
+      */
     public void setFirstName(String firstName) {
 
      if( firstName.length() > 1)
@@ -51,10 +57,15 @@ public class Student
          throw new IllegalArgumentException("Student first Name should be more than one characters");
     }
 
+    // This method will return the last Name
     public String getLastName() {
         return lastName;
     }
 
+     /**
+      * This method will put validation on last name and make the first letter capital
+      * @param lastName
+      */
     public void setLastName(String lastName) {
 
         if( lastName.length() > 1)
@@ -63,10 +74,18 @@ public class Student
             throw new IllegalArgumentException("Student's last Name should be more than one characters");
     }
 
+     /**
+      *  This method will return student number
+      * @return
+      */
     public int getStudentNumber() {
         return studentNumber;
     }
 
+     /**
+      * This method will put validation on student number
+      * @param studentNumber
+      */
     public void setStudentNumber(int studentNumber) {
         if (studentNumber >= 100000000 && studentNumber <= 999999999)
             this.studentNumber = studentNumber;

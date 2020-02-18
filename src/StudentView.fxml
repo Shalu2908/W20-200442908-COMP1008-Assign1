@@ -35,7 +35,7 @@
             <font>
                <Font size="14.0" />
             </font></Label>
-         <ListView fx:id="listView" prefHeight="166.0" prefWidth="165.0" />
+         <ListView fx:id="listView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="163.0" prefWidth="128.0" />
    </HBox>
 
 

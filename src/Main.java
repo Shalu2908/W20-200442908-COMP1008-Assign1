@@ -13,6 +13,11 @@ public class Main extends Application{
 
     }
 
+    /**
+     * This will uploads the window and show student's information on window
+     * @param window
+     * @throws Exception
+     */
     @Override
     public void start (Stage window) throws Exception{
 
