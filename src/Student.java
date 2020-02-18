@@ -13,7 +13,7 @@ public class Student
     private String firstName, lastName;
     private int studentNumber;
     private Image studentImage;
-    private ListView listView;
+    private  ListView listView;
 
 
 
