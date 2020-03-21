@@ -1,4 +1,3 @@
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -12,11 +11,26 @@ public class Student
 
     private String firstName, lastName;
     private int studentNumber;
-    private Image studentImage;
-    private  ListView listView;
+     private Image studentImage;
+     private ArrayList<String> favActivities;
 
 
+     /**
+     * This is the constructor.  It's goal is to validate the arguments and set
+     * valid values in the instance variables
+     *  eg. firstName,LastName and studentNumber
+     */
+    public Student(String firstName, String lastName, int studentNumber)
+    {
+        setFirstName(firstName);
+        setLastName (lastName);
+        setStudentNumber(studentNumber);
 
+    }
+    public Student(ArrayList<String> favActivities)
+    {
+        favActivities = new ArrayList<>();
+    }
      /**
       *  This will return image
       * @return
@@ -26,15 +40,14 @@ public class Student
      }
 
      /**
-     * This is the constructor.  It's goal is to validate the arguments and set
-     * valid values in the instance variables
-     *  eg. firstName,LastName and studentNumber
-     */
-    public Student(String firstName, String lastName, int studentNumber) {
-        setFirstName(firstName);
-        setLastName (lastName);
-        setStudentNumber(studentNumber);
-    }
+      * This method will return activities of student
+      * * @return
+      * @return
+      */
+     public ArrayList<String> getFavActivities() {
+         return favActivities;
+     }
+
 
      /**
       * These are get/set methods for each instance variables
@@ -94,12 +107,30 @@ public class Student
     }
 
      /**
+      *  This method checks ArrayList should not be empty
+      */
+     public void addFavActivities(String activities){
+         if (!activities.isEmpty())
+             favActivities.add(activities);
+         else
+             throw new IllegalArgumentException("Favourite activities must not be empty.");
+     }
+
+     public String getFavActivitiesString(){
+         StringBuilder scenebuilder = new StringBuilder();
+         for (String activities: favActivities)
+             scenebuilder.append(String.format("%s%n",activities));
+         return scenebuilder.toString();
+     }
+
+     /**
       *  A toString() method that returns a String in form of firstName lastName and student #: 123456
       * @return
       */
         public String toString()
         {
-            return String.format("%s %s Student #: %d",firstName,lastName,studentNumber);
+            return String.format("%s %s Student #: %d F" +
+                    "\n Favourite Activities are:",firstName,lastName,studentNumber, getFavActivities());
 
         }
 
