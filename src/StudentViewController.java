@@ -1,14 +1,19 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+
 import java.util.ResourceBundle;
 
 public class StudentViewController implements Initializable {
@@ -28,6 +33,8 @@ public class StudentViewController implements Initializable {
     @FXML
     private TextArea favActTextArea;
 
+    private Student selectedStudent;
+
 
     /**
      * This method will initialize variables and get values from student class
@@ -35,19 +42,25 @@ public class StudentViewController implements Initializable {
      * @param resources
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-
-        Student Student1 = new Student ("shalu","sharma",200442908);
-        Student1.addFavActivities("dancing");
-        Student1.addFavActivities("reading");
-        firstNameLabel.setText(String.format("First Name: %s",Student1.getFirstName()));
-        lastNameLabel.setText(String.format("Last Name: %s",Student1.getLastName()));
-        studentNumLabel.setText(String.format("Student Number: %d",Student1.getStudentNumber()));
-        studentImageView.setImage(Student1.getStudentImage());
-        favActTextArea.setText(Student1.getFavActivitiesString());
-
-
-
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        firstNameLabel.setText("");
+       lastNameLabel.setText("");
+       studentNumLabel.setText("");
     }
+
+    /**
+     * This method will get the data from the student object
+     * @param student
+     */
+    public void getDataFromObject(Student student) {
+        selectedStudent = student;
+        firstNameLabel.setText(String.format("First Name: %s", student.getFirstName()));
+        lastNameLabel.setText(String.format("Last Name: %s", student.getLastName()));
+        studentNumLabel.setText(String.format("Student Number: %d", student.getStudentNumber()));
+        studentImageView.setImage("");
+        favActTextArea.setText(student.getFavActivitiesString());
+    }
+
+
 }

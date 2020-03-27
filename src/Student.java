@@ -15,6 +15,10 @@ public class Student
      private ArrayList<String> favActivities;
 
 
+     public void setStudentImage(Image studentImage) {
+         this.studentImage = studentImage;
+     }
+
      /**
      * This is the constructor.  It's goal is to validate the arguments and set
      * valid values in the instance variables
@@ -25,27 +29,24 @@ public class Student
         setFirstName(firstName);
         setLastName (lastName);
         setStudentNumber(studentNumber);
+        setStudentImage(studentImage);
+        favActivities = new ArrayList<>();
 
     }
-    public Student(ArrayList<String> favActivities)
-    {
-        favActivities = new ArrayList<>();
-    }
+//    public Student(String firstName, String lastName, int studentNumber ,ArrayList<String> favActivities)
+//    {
+//        setFirstName(firstName);
+//        setLastName (lastName);
+//        setStudentNumber(studentNumber);
+////      studentImage = new Image("./images/studentImage.jpg");
+////      favActivities = new ArrayList<>();
+//    }
      /**
       *  This will return image
       * @return
       */
      public Image getStudentImage() {
          return studentImage;
-     }
-
-     /**
-      * This method will return activities of student
-      * * @return
-      * @return
-      */
-     public ArrayList<String> getFavActivities() {
-         return favActivities;
      }
 
 
@@ -105,6 +106,15 @@ public class Student
         else
             throw new IllegalArgumentException("Student Number must be in between 100000000 to 999999999");
     }
+     /**
+      * This method will return activities of student
+      * * @return
+      * @return
+      */
+     public ArrayList<String> getFavActivities() {
+         return favActivities;
+     }
+
 
      /**
       *  This method checks ArrayList should not be empty
@@ -117,10 +127,10 @@ public class Student
      }
 
      public String getFavActivitiesString(){
-         StringBuilder scenebuilder = new StringBuilder();
+         StringBuilder sb = new StringBuilder();
          for (String activities: favActivities)
-             scenebuilder.append(String.format("%s%n",activities));
-         return scenebuilder.toString();
+             sb.append(String.format("%s%n",activities));
+         return sb.toString();
      }
 
      /**
@@ -129,8 +139,8 @@ public class Student
       */
         public String toString()
         {
-            return String.format("%s %s Student #: %d F" +
-                    "\n Favourite Activities are:",firstName,lastName,studentNumber, getFavActivities());
+            return String.format("%s %s Student #: %d " +
+                    "\n Favourite Activities are:%n%s",firstName,lastName,studentNumber, favActivities);
 
         }
 

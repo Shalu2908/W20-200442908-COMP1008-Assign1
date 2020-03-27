@@ -21,7 +21,7 @@ public class Main extends Application{
     @Override
     public void start (Stage window) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("StudentsView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("NewStudentView.fxml"));
         Scene scene = new Scene(root);
         window.setScene(scene);
         window.setTitle("Student Card");
