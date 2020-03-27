@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+
 import javafx.stage.Stage;
 
 
@@ -17,8 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewStudentController implements Initializable {
-    @FXML
-    private ImageView studentImageView;
+
 
     @FXML
     private TextField firstNameTextField;

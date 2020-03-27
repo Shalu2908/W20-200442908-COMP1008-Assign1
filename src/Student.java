@@ -14,11 +14,6 @@ public class Student
      private Image studentImage;
      private ArrayList<String> favActivities;
 
-
-     public void setStudentImage(Image studentImage) {
-         this.studentImage = studentImage;
-     }
-
      /**
      * This is the constructor.  It's goal is to validate the arguments and set
      * valid values in the instance variables
@@ -33,20 +28,21 @@ public class Student
         favActivities = new ArrayList<>();
 
     }
-//    public Student(String firstName, String lastName, int studentNumber ,ArrayList<String> favActivities)
-//    {
-//        setFirstName(firstName);
-//        setLastName (lastName);
-//        setStudentNumber(studentNumber);
-////      studentImage = new Image("./images/studentImage.jpg");
-////      favActivities = new ArrayList<>();
-//    }
+
      /**
       *  This will return image
       * @return
       */
      public Image getStudentImage() {
          return studentImage;
+     }
+
+     /**
+      * This method sets the student image
+      * @param studentImage
+      */
+     public void setStudentImage(Image studentImage) {
+         this.studentImage = studentImage;
      }
 
 
@@ -125,6 +121,11 @@ public class Student
          else
              throw new IllegalArgumentException("Favourite activities must not be empty.");
      }
+
+     /**
+      * This method will get the activities of student and convert the list into  string
+      * @return
+      */
 
      public String getFavActivitiesString(){
          StringBuilder sb = new StringBuilder();

@@ -10,12 +10,12 @@
       <ImageView fx:id="studentImageView" fitHeight="159.0" fitWidth="247.0" layoutX="50.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane layoutX="50.0" layoutY="321.0" prefHeight="230.0" prefWidth="720.0">
          <children>
-            <Label layoutX="69.0" layoutY="35.0" text="Favourite Activities :">
+            <Label layoutX="69.0" layoutY="35.0" text="Favourite Activities :" textFill="#af5555">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Broadway" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="favActTextArea" layoutX="271.0" layoutY="35.0" prefHeight="138.0" prefWidth="247.0" />
+            <TextArea fx:id="favActTextArea" layoutX="296.0" layoutY="35.0" prefHeight="138.0" prefWidth="247.0" />
          </children>
       </AnchorPane>
       <GridPane layoutX="328.0" layoutY="64.0" prefHeight="178.0" prefWidth="356.0">
@@ -29,19 +29,19 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="firstNameLabel" text="First Name :">
+            <Label fx:id="firstNameLabel" text="First Name :" textFill="#af5555">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Broadway" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lastNameLabel" text="Last Name :" GridPane.rowIndex="1">
+            <Label fx:id="lastNameLabel" text="Last Name :" textFill="#af5555" GridPane.rowIndex="1">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Broadway" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="studentNumLabel" text="Stundent Number :" GridPane.rowIndex="2">
+            <Label fx:id="studentNumLabel" text="Stundent Number :" textFill="#af5555" GridPane.rowIndex="2">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Broadway" size="18.0" />
                </font>
             </Label>
          </children>
