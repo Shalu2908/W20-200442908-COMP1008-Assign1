@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -55,7 +56,7 @@ public class StudentViewController implements Initializable {
         firstNameLabel.setText(String.format("First Name: %s", student.getFirstName()));
         lastNameLabel.setText(String.format("Last Name: %s", student.getLastName()));
         studentNumLabel.setText(String.format("Student Number: %d", student.getStudentNumber()));
-        studentImageView.setImage(student.getStudentImage());
+        studentImageView.setImage(new Image("./images/image.png"));
         favActTextArea.setText(student.getFavActivitiesString());
     }
 
