@@ -5,19 +5,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewStudentController implements Initializable {
 
+    @FXML
+    private ImageView newStudentImageView;
 
     @FXML
     private TextField firstNameTextField;
@@ -27,6 +31,12 @@ public class NewStudentController implements Initializable {
 
     @FXML
     private TextField stuNumTextField;
+
+    @FXML
+    private DatePicker birthdayPicker;
+
+    @FXML
+    private Label ageLabel;
 
     @FXML
     private Label errorLabel;
@@ -56,12 +66,43 @@ public class NewStudentController implements Initializable {
     @FXML
     private CheckBox skiingCheckBox;
 
+    @FXML
+    private Button viewStudentButton;
+
     // Made a Private newStudent Object
     private Student newStudent;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
+
+        ageLabel.setVisible(false);
+//        ageLabel.setText("");
         errorLabel.setText("");
+        viewStudentButton.setVisible(false);
+        newStudentImageView.setImage(new Image("./Images/image.png"));
+    }
+
+    /**
+     * This method will launch Filechooser object so that user can choose an image when user pushes the button
+     */
+    public void fileChooseButtonPushed(ActionEvent event)
+    {
+        //here we will get the stage to open up the window
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        FileChooser filechooser = new FileChooser();
+        filechooser.setTitle("Open Image");
+
+        // it will make the file chooser visible
+        File imageFile = filechooser.showOpenDialog(stage);
+
+        if(imageFile.isFile())
+        {
+           newStudentImageView.setImage(new Image(imageFile.toURI().toString()));
+        }
+
+
     }
 
     /**
@@ -75,10 +116,17 @@ public class NewStudentController implements Initializable {
         {
             try
             {
-                newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), Integer.parseInt(stuNumTextField.getText()));
+                newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), Integer.parseInt(stuNumTextField.getText()), birthdayPicker.getValue());
                 addFavouriteActivities();
 
+                ageLabel.setText(String.format("Age:%d",newStudent.getAge()));
+                ageLabel.setVisible(true);
+
+
+
                 System.out.println("New Student :"+ newStudent);
+                viewStudentButton.setVisible(true);
+
             }catch (IllegalArgumentException e)
             {
                 errorLabel.setText(e.getMessage());
@@ -134,28 +182,28 @@ public class NewStudentController implements Initializable {
     public void addFavouriteActivities()
     {
         if(readingCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Reading"));
+            newStudent.addFavActivities("Reading");
 
         if(playingCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Playing"));
+            newStudent.addFavActivities("Playing");
 
         if(runningCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Running"));
+            newStudent.addFavActivities("Running");
 
         if(photographyCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Photography"));
+            newStudent.addFavActivities("Photography");
 
         if(dancingCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Dancing"));
+            newStudent.addFavActivities("Dancing");
 
         if(skiingCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Skiing"));
+            newStudent.addFavActivities("Skiing");
 
         if(gamingCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Gaming"));
+            newStudent.addFavActivities("Gaming");
 
         if(shoppingCheckBox.isSelected())
-            newStudent.addFavActivities(String.format("Shopping"));
+            newStudent.addFavActivities("Shopping");
     }
     /**
      * This method will change the screen and pass the information from the selected student to the student object

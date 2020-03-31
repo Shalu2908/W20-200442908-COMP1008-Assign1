@@ -1,5 +1,8 @@
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Student
@@ -11,6 +14,7 @@ public class Student
 
     private String firstName, lastName;
     private int studentNumber;
+    private LocalDate birthday;
      private Image studentImage;
      private ArrayList<String> favActivities;
 
@@ -19,15 +23,39 @@ public class Student
      * valid values in the instance variables
      *  eg. firstName,LastName and studentNumber
      */
-    public Student(String firstName, String lastName, int studentNumber)
+    public Student(String firstName, String lastName, int studentNumber, LocalDate birthday)
     {
         setFirstName(firstName);
         setLastName (lastName);
         setStudentNumber(studentNumber);
+        setBirthday(birthday);
         setStudentImage(studentImage);
         favActivities = new ArrayList<>();
 
     }
+
+
+     /**
+      * This method will return birthday of student
+      */
+     public LocalDate getBirthday() {
+         return birthday;
+     }
+     /**
+      * This method sets the birthday
+      */
+     public void setBirthday(LocalDate birthday) {
+         this.birthday = birthday;
+     }
+
+     /**
+      * This method will calculate the difference between the born year and the present year and returns the age
+      */
+
+     public int getAge()
+     {
+         return Period.between(birthday,LocalDate.now()).getYears();
+     }
 
      /**
       *  This will return image

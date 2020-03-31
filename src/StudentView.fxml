@@ -18,7 +18,7 @@
             <TextArea fx:id="favActTextArea" layoutX="296.0" layoutY="35.0" prefHeight="138.0" prefWidth="247.0" />
          </children>
       </AnchorPane>
-      <GridPane layoutX="328.0" layoutY="64.0" prefHeight="178.0" prefWidth="356.0">
+      <GridPane layoutX="328.0" layoutY="64.0" prefHeight="178.0" prefWidth="425.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,17 +29,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="firstNameLabel" text="First Name :" textFill="#af5555">
+            <Label fx:id="firstNameLabel" prefHeight="21.0" prefWidth="177.0" text="First Name :" textFill="#af5555">
                <font>
                   <Font name="Broadway" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lastNameLabel" text="Last Name :" textFill="#af5555" GridPane.rowIndex="1">
+            <Label fx:id="lastNameLabel" prefHeight="21.0" prefWidth="190.0" text="Last Name :" textFill="#af5555" GridPane.rowIndex="1">
                <font>
                   <Font name="Broadway" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="studentNumLabel" text="Stundent Number :" textFill="#af5555" GridPane.rowIndex="2">
+            <Label fx:id="studentNumLabel" prefHeight="21.0" prefWidth="218.0" text="Stundent Number :" textFill="#af5555" GridPane.rowIndex="2">
                <font>
                   <Font name="Broadway" size="18.0" />
                </font>
