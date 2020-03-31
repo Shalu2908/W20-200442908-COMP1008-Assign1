@@ -94,10 +94,26 @@ public class NewStudentController implements Initializable {
         FileChooser filechooser = new FileChooser();
         filechooser.setTitle("Open Image");
 
+        // set filters for .jpg and .png
+        FileChooser.ExtensionFilter imageFilters = new FileChooser.ExtensionFilter("Image Files", "*.jpg","*.png");
+        filechooser.getExtensionFilters().add(imageFilters);
+
+        // set the start directory
+        String userDirectoryString  = System.getProperty("user.home")+"\\Pictures";
+        File userDirectory = new File(userDirectoryString);
+
+        // it will make sure that our File can reach the directory
+        if(!userDirectory.canRead())
+            userDirectory = new File(System.getProperty("user.home"));
+
+        //set the fileChooser to start with userDirectory
+        filechooser.setInitialDirectory(userDirectory);
+
         // it will make the file chooser visible
         File imageFile = filechooser.showOpenDialog(stage);
 
-        if(imageFile.isFile())
+        // now imageFile is not null and if the user cancels to choose the image it would not give null pointer exception
+        if(imageFile != null && imageFile.isFile())
         {
            newStudentImageView.setImage(new Image(imageFile.toURI().toString()));
         }

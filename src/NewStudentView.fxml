@@ -104,7 +104,7 @@
          </font>
       </Label>
       <Button fx:id="viewStudentButton" layoutX="457.0" layoutY="536.0" mnemonicParsing="false" onAction="#changeScreenOnButtonPushed" text="Go to Student Card" />
-      <ImageView fx:id="newStudentImageView" fitHeight="134.0" fitWidth="192.0" layoutX="574.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="newStudentImageView" fitHeight="134.0" fitWidth="181.0" layoutX="574.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="imageChooserButton" layoutX="575.0" layoutY="286.0" mnemonicParsing="false" onAction="#fileChooseButtonPushed" prefHeight="26.0" prefWidth="181.0" text="Choose an image" />
       <Label layoutX="40.0" layoutY="238.0" prefHeight="18.0" prefWidth="147.0" text="Birthday:">
          <font>
