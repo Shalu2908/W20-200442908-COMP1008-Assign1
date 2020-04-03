@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
 public class NewStudentController implements Initializable {
@@ -40,7 +42,6 @@ public class NewStudentController implements Initializable {
 
     @FXML
     private Label errorLabel;
-
 
     @FXML
     private CheckBox readingCheckBox;
@@ -75,9 +76,9 @@ public class NewStudentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-
+        stuNumTextField.setText(String.valueOf(Student.getStudentNumber()+1));
         ageLabel.setVisible(false);
-//        ageLabel.setText("");
+        stuNumTextField.setEditable(false);
         errorLabel.setText("");
         viewStudentButton.setVisible(false);
         newStudentImageView.setImage(new Image("./Images/image.png"));
@@ -132,13 +133,9 @@ public class NewStudentController implements Initializable {
         {
             try
             {
-                newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), Integer.parseInt(stuNumTextField.getText()), birthdayPicker.getValue());
+                newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), birthdayPicker.getValue());
+               // stuNumTextField.setText(String.valueOf(Student.getStudentNumber()));
                 addFavouriteActivities();
-
-                ageLabel.setText(String.format("Age:%d",newStudent.getAge()));
-                ageLabel.setVisible(true);
-
-
 
                 System.out.println("New Student :"+ newStudent);
                 viewStudentButton.setVisible(true);
@@ -241,6 +238,16 @@ public class NewStudentController implements Initializable {
         window.setTitle("Student Card");
         window.show();
 
+    }
+
+    /**
+     *  This method will get the age from student object and show it when date is choose from the DatePicker
+     */
+
+    public void onAction(ActionEvent event)
+    {
+        ageLabel.setText("Age"+(Period.between(birthdayPicker.getValue(), LocalDate.now()).getYears()));
+        ageLabel.setVisible(true);
     }
 
 }

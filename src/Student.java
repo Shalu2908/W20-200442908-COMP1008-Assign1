@@ -12,22 +12,25 @@ public class Student
      * They are marked as private so that ONLY the student class can control how they are set
      */
 
-    private String firstName, lastName;
-    private int studentNumber;
-    private LocalDate birthday;
+     private String firstName, lastName;
+     private int newStudentNumber;
+     private static int studentNumber = 100000000;
+     private LocalDate birthday;
      private Image studentImage;
      private ArrayList<String> favActivities;
+
 
      /**
      * This is the constructor.  It's goal is to validate the arguments and set
      * valid values in the instance variables
      *  eg. firstName,LastName and studentNumber
      */
-    public Student(String firstName, String lastName, int studentNumber, LocalDate birthday)
+    public Student(String firstName, String lastName, LocalDate birthday)
     {
         setFirstName(firstName);
         setLastName (lastName);
-        setStudentNumber(studentNumber);
+        //newStudentNumber = setStudentNumber(studentNumber);
+        newStudentNumber = setStudentNumber(studentNumber);
         setBirthday(birthday);
         setStudentImage(studentImage);
         favActivities = new ArrayList<>();
@@ -45,8 +48,14 @@ public class Student
       * This method sets the birthday
       */
      public void setBirthday(LocalDate birthday) {
-         this.birthday = birthday;
+
+        if( Period.between(birthday,LocalDate.now()).getYears() >=10 && Period.between(birthday,LocalDate.now()).getYears() <=120)
+             this.birthday = birthday;
+         else
+           throw new IllegalArgumentException("Student's age must be between 10-120 years.");
      }
+
+
 
      /**
       * This method will calculate the difference between the born year and the present year and returns the age
@@ -113,10 +122,19 @@ public class Student
     }
 
      /**
+      * This will return the new student
+      */
+     public int getNewStudentNumber() {
+         return newStudentNumber;
+     }
+
+     /**
       *  This method will return student number
       * @return
       */
-    public int getStudentNumber() {
+    public static int getStudentNumber()
+    {
+        //studentNumber++;
         return studentNumber;
     }
 
@@ -124,11 +142,15 @@ public class Student
       * This method will put validation on student number
       * @param studentNumber
       */
-    public void setStudentNumber(int studentNumber) {
-        if (studentNumber >= 100000000 && studentNumber <= 999999999)
-            this.studentNumber = studentNumber;
-        else
+    private int setStudentNumber(int studentNumber) {
+        if (studentNumber >= 100000000 && studentNumber <= 999999999) {
+            newStudentNumber = studentNumber;
+            studentNumber = Student.studentNumber++;
+        }
+        else {
             throw new IllegalArgumentException("Student Number must be in between 100000000 to 999999999");
+        }
+        return  studentNumber;
     }
      /**
       * This method will return activities of student

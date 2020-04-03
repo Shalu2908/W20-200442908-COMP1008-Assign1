@@ -24,7 +24,7 @@ public class Main extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("NewStudentView.fxml"));
         Scene scene = new Scene(root);
         window.setScene(scene);
-        window.setTitle("Student Card");
+        window.setTitle("Create Student");
         window.show();
     }
 
