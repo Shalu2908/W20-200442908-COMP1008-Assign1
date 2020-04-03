@@ -133,7 +133,7 @@ public class NewStudentController implements Initializable {
         {
             try
             {
-                newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), birthdayPicker.getValue());
+                newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), birthdayPicker.getValue(),newStudentImageView.getImage());
                // stuNumTextField.setText(String.valueOf(Student.getStudentNumber()));
                 addFavouriteActivities();
 

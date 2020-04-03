@@ -25,7 +25,7 @@ public class Student
      * valid values in the instance variables
      *  eg. firstName,LastName and studentNumber
      */
-    public Student(String firstName, String lastName, LocalDate birthday)
+    public Student(String firstName, String lastName, LocalDate birthday, Image studentImage)
     {
         setFirstName(firstName);
         setLastName (lastName);
