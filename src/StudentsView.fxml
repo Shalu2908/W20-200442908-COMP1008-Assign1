@@ -10,7 +10,7 @@
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="271.0" prefWidth="800.0">
 
-            <Label layoutX="270.0" layoutY="23.0" text="Student Cards" textFill="#d21212">
+            <Label layoutX="270.0" layoutY="23.0" text="Student Profiles" textFill="#d21212">
                <font>
                   <Font name="System Bold Italic" size="36.0" />
                </font>

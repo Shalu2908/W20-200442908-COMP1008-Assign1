@@ -78,8 +78,8 @@ public class StudentViewController implements Initializable
 
         firstNameLabel.setText(selectedStudent.getFirstName());
         lastNameLabel.setText(selectedStudent.getLastName());
-        studentNumLabel.setText(Integer.toString(Student.getStudentNumber()));
-        //studentNumLabel.setText(String.format("Student Number : %20d", Student.getStudentNumber()));
+        studentNumLabel.setText(Integer.toString(selectedStudent.getNewStudentNumber()));
+        //System.out.println("New Student on next page"+selectedStudent.getNewStudentNumber());
         birthdayLabel.setText(selectedStudent.getBirthday().toString());
         ageLabel.setText(Integer.toString(selectedStudent.getAge()));
         studentImageView.setImage(selectedStudent.getStudentImage());

@@ -68,26 +68,26 @@ public class NewStudentController implements Initializable {
     @FXML
     private CheckBox skiingCheckBox;
 
-    @FXML
-    private Button viewStudentButton;
+//    @FXML
+//    private Button viewStudentButton;
 
     // Made a Private newStudent Object
     private Student newStudent;
 
 
-
-
-
+    /**
+     * This method will set initial values of the fields
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
 
         stuNumTextField.setText(String.valueOf(Student.getStudentNumber()+1));
-        System.out.printf(Student.getStudentNumber()+"");
         ageLabel.setVisible(false);
         stuNumTextField.setEditable(false);
         errorLabel.setText("");
-        viewStudentButton.setVisible(false);
         newStudentImageView.setImage(new Image("./Images/image.png"));
     }
 
@@ -142,12 +142,11 @@ public class NewStudentController implements Initializable {
             {
                 newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), birthdayPicker.getValue(),newStudentImageView.getImage());
                 addFavouriteActivities();
-
                 System.out.println("New Student :"+ newStudent);
                 Main.getStudentsList().add(newStudent);
-                viewStudentButton.setVisible(true);
+                changeScreenOnButtonPushed(event);
 
-            }catch (IllegalArgumentException e)
+            }catch (IllegalArgumentException | IOException e )
             {
                 errorLabel.setText(e.getMessage());
             }
@@ -172,17 +171,17 @@ public class NewStudentController implements Initializable {
                 errorMessage = "Both first and last name fields must not be empty.";
         }
 
-        if(stuNumTextField.getText().isEmpty())
+        if(birthdayPicker.getValue()== null)
         {
             if(errorMessage.isEmpty())
-                errorMessage = "Student number field must not be empty.";
+                errorMessage = "Student age must be set.";
             else if (firstNameTextField.getText().isEmpty() &&
             !lastNameTextField.getText().isEmpty())
-                errorMessage = "First name and student Number must not be empty.";
+                errorMessage = "First name and student birthday field must not be empty.";
 
             else if (!firstNameTextField.getText().isEmpty() &&
                      lastNameTextField.getText().isEmpty())
-                errorMessage = "Last name and student Number must not be empty.";
+                errorMessage = "Last name and birthday field must not be empty.";
             else
                 errorMessage = "All fields must not be empty.";
         }

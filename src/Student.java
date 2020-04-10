@@ -12,13 +12,7 @@ public class Student
      */
 
      private String firstName, lastName;
-
-
-
      private int newStudentNumber;
-
-
-
      private static int studentNumber = 100000000;
      private LocalDate birthday;
      private Image studentImage;
@@ -34,9 +28,7 @@ public class Student
     {
         setFirstName(firstName);
         setLastName (lastName);
-
         newStudentNumber = setStudentNumber();
-        System.out.printf(newStudentNumber+"");
         setBirthday(birthday);
         setStudentImage(studentImage);
         favActivities = new ArrayList<>();
@@ -139,30 +131,25 @@ public class Student
       *  This method will return student number
       * @return
       */
-
-
+     public static int getStudentNumber() {
+        return studentNumber;
+     }
 
      /**
       * This method will put validation on student number
 
       */
-     public static int getStudentNumber() {
-        return studentNumber;
-     }
-
     private static int setStudentNumber()
     {
 
         if (studentNumber >= 100000000 && studentNumber <= 999999999) {
-
-
-           studentNumber++;
+            studentNumber++;
         }
         else {
             throw new IllegalArgumentException("Student Number must be in between 100000000 to 999999999");
         }
-        System.out.println("outsode"+studentNumber);
-return studentNumber;
+
+       return studentNumber;
     }
      /**
       * This method will return activities of student
