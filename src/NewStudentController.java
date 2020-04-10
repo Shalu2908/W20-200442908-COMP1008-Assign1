@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NewStudentController implements Initializable {
@@ -73,10 +74,16 @@ public class NewStudentController implements Initializable {
     // Made a Private newStudent Object
     private Student newStudent;
 
+
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+
         stuNumTextField.setText(String.valueOf(Student.getStudentNumber()+1));
+        System.out.printf(Student.getStudentNumber()+"");
         ageLabel.setVisible(false);
         stuNumTextField.setEditable(false);
         errorLabel.setText("");
@@ -134,10 +141,10 @@ public class NewStudentController implements Initializable {
             try
             {
                 newStudent = new Student (firstNameTextField.getText(), lastNameTextField.getText(), birthdayPicker.getValue(),newStudentImageView.getImage());
-               // stuNumTextField.setText(String.valueOf(Student.getStudentNumber()));
                 addFavouriteActivities();
 
                 System.out.println("New Student :"+ newStudent);
+                Main.getStudentsList().add(newStudent);
                 viewStudentButton.setVisible(true);
 
             }catch (IllegalArgumentException e)
@@ -225,17 +232,17 @@ public class NewStudentController implements Initializable {
     public void changeScreenOnButtonPushed(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("StudentView.fxml"));
+        loader.setLocation(getClass().getResource("StudentsView.fxml"));
         Parent studentView = loader.load();
         Scene studentScene = new Scene(studentView);
 
         StudentViewController controller = loader.getController();
-        controller.getDataFromObject(newStudent);
+        controller.selectedStudent(newStudent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         window.setScene(studentScene);
-        window.setTitle("Student Card");
+        window.setTitle("View Students");
         window.show();
 
     }
@@ -246,8 +253,23 @@ public class NewStudentController implements Initializable {
 
     public void onAction(ActionEvent event)
     {
-        ageLabel.setText("Age"+(Period.between(birthdayPicker.getValue(), LocalDate.now()).getYears()));
+        ageLabel.setText("Age :"+(Period.between(birthdayPicker.getValue(), LocalDate.now()).getYears()));
         ageLabel.setVisible(true);
     }
+
+    /**
+     *  This method will load the default student
+     */
+
+    public void getDefaultStudent(ActionEvent event) throws IOException {
+
+        firstNameTextField.setText("Shalu");
+        lastNameTextField.setText("Sharma");
+        birthdayPicker.setValue(LocalDate.of(1999,1,1));
+        shoppingCheckBox.setSelected(true);
+        dancingCheckBox.setSelected(true);
+        newStudentImageView.setImage(new Image("./Images/studentImage.jpg"));
+    }
+
 
 }

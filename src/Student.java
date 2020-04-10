@@ -1,6 +1,5 @@
-import javafx.scene.control.DatePicker;
-import javafx.scene.image.Image;
 
+import javafx.scene.image.Image;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -13,7 +12,13 @@ public class Student
      */
 
      private String firstName, lastName;
+
+
+
      private int newStudentNumber;
+
+
+
      private static int studentNumber = 100000000;
      private LocalDate birthday;
      private Image studentImage;
@@ -29,8 +34,9 @@ public class Student
     {
         setFirstName(firstName);
         setLastName (lastName);
-        //newStudentNumber = setStudentNumber(studentNumber);
-        newStudentNumber = setStudentNumber(studentNumber);
+
+        newStudentNumber = setStudentNumber();
+        System.out.printf(newStudentNumber+"");
         setBirthday(birthday);
         setStudentImage(studentImage);
         favActivities = new ArrayList<>();
@@ -50,7 +56,9 @@ public class Student
      public void setBirthday(LocalDate birthday) {
 
         if( Period.between(birthday,LocalDate.now()).getYears() >=10 && Period.between(birthday,LocalDate.now()).getYears() <=120)
-             this.birthday = birthday;
+        {
+            this.birthday = birthday;
+        }
          else
            throw new IllegalArgumentException("Student's age must be between 10-120 years.");
      }
@@ -104,6 +112,11 @@ public class Student
          throw new IllegalArgumentException("Student first Name should be more than one characters");
     }
 
+     public int getNewStudentNumber() {
+
+         return newStudentNumber;
+     }
+
     // This method will return the last Name
     public String getLastName() {
         return lastName;
@@ -121,36 +134,35 @@ public class Student
             throw new IllegalArgumentException("Student's last Name should be more than one characters");
     }
 
-     /**
-      * This will return the new student
-      */
-     public int getNewStudentNumber() {
-         return newStudentNumber;
-     }
 
      /**
       *  This method will return student number
       * @return
       */
-    public static int getStudentNumber()
-    {
-        //studentNumber++;
-        return studentNumber;
-    }
+
+
 
      /**
       * This method will put validation on student number
-      * @param studentNumber
+
       */
-    private int setStudentNumber(int studentNumber) {
+     public static int getStudentNumber() {
+        return studentNumber;
+     }
+
+    private static int setStudentNumber()
+    {
+
         if (studentNumber >= 100000000 && studentNumber <= 999999999) {
-            newStudentNumber = studentNumber;
-            studentNumber = Student.studentNumber++;
+
+
+           studentNumber++;
         }
         else {
             throw new IllegalArgumentException("Student Number must be in between 100000000 to 999999999");
         }
-        return  studentNumber;
+        System.out.println("outsode"+studentNumber);
+return studentNumber;
     }
      /**
       * This method will return activities of student
@@ -190,8 +202,7 @@ public class Student
       */
         public String toString()
         {
-            return String.format("%s %s Student #: %d " +
-                    "\n Favourite Activities are:%n%s",firstName,lastName,studentNumber, favActivities);
+            return String.format("%s %s Student #: %d " +"",firstName,lastName,studentNumber);
 
         }
 
